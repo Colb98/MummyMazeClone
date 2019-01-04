@@ -20,6 +20,16 @@ public class WhiteMummy
         this.mummy.transform.position = new Vector3(position.x * 10f * Constant.Size, 10, position.y * 10f * Constant.Size);
     }
 
+    public Vector2Int GetPosition()
+    {
+        return position;
+    }
+
+    public GameObject GetGameObject()
+    {
+        return mummy;
+    }
+
     public void Move(Vector2Int PlayerPosition)
     {
         // White mummies prior is the horizontal direction
@@ -43,6 +53,11 @@ public class WhiteMummy
             MoveUp();
         else if (PlayerPosition.y < position.y && canMoveDown())
             MoveDown();
+
+        Vector3 pos = mummy.transform.position;
+        pos.x = position.x * Constant.Size * 10;
+        pos.z = position.y * Constant.Size * 10;
+        mummy.transform.position = pos;
     }
 
     private Vector3 getNewStart()
@@ -72,6 +87,7 @@ public class WhiteMummy
 
     private void MoveDown()
     {
+        WorldManager.movingSomething = true;
         position.y--;
         if(firstMove == 0)
         {
@@ -96,6 +112,7 @@ public class WhiteMummy
 
     private void MoveUp()
     {
+        WorldManager.movingSomething = true;
         position.y++;
         if (firstMove == 0)
         {
@@ -118,6 +135,7 @@ public class WhiteMummy
 
     private void MoveLeft()
     {
+        WorldManager.movingSomething = true;
         position.x--;
         if (firstMove == 0)
         {
@@ -142,6 +160,7 @@ public class WhiteMummy
 
     private void MoveRight()
     {
+        WorldManager.movingSomething = true;
         position.x++;
         if (firstMove == 0)
         {

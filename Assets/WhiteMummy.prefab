@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5255969350428432881}
   - component: {fileID: 7389691796410655282}
   - component: {fileID: 6515845709181352818}
+  - component: {fileID: 5844547051096388641}
   m_Layer: 0
   m_Name: WhiteMummy
   m_TagString: Untagged
@@ -121,3 +122,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab07a095ae65a0468a19098cde2ffc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetQueue: []
+--- !u!114 &5844547051096388641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4905204722313337216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c36b591767bdd04c8f70b5cd6ab0e66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameOverAsset: {fileID: 1829097311661663339, guid: e6ac366521c84f2449c61a822ae7f854,
+    type: 3}

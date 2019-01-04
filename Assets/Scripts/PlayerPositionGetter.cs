@@ -14,6 +14,8 @@ public class PlayerPositionGetter : MonoBehaviour
             string[] bits = name.Split(',');
             WorldManager.playerPos.x = int.Parse(bits[1]);
             WorldManager.playerPos.y = int.Parse(bits[0]);
+
+            Debug.Log(WorldManager.playerPos);
         }
     }
 }

@@ -104,5 +104,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 372e2157d8def0c4d83f6ad6230717ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FinishLevelUI: {fileID: 5545032564532423330, guid: 4def310fdae60864ea46270872451274,
-    type: 3}
+  canvas: {fileID: 2973284471455939039, guid: 4def310fdae60864ea46270872451274, type: 3}
+  endGame: {fileID: 4979529736518465612, guid: 60f8ff1985ee1ab43a8d111b062c405d, type: 3}
