@@ -4,12 +4,22 @@ using UnityEngine.SceneManagement;
 
 public class WorldManager : MonoBehaviour
 {
+    private static bool firstRun = true;
     public static GameObject player;
     public static Vector2Int playerPos;
     public static List<WhiteMummy> whiteMummies = new List<WhiteMummy>();
     public static bool movingSomething = false;
     public static int[,,] mapData;
     public static GameObject endGameTrigger;
+
+    public void Start()
+    {
+        if (firstRun)
+        {
+            firstRun = false;
+            GoToLevel(1);
+        }
+    }
 
     public void Update()
     {
@@ -76,5 +86,11 @@ public class WorldManager : MonoBehaviour
         if (mapData[playerPos.y, playerPos.x, 3] == 1)
             return false;
         return true;
+    }
+
+    public void GoToLevel(int level)
+    {
+        MapGenerator mg = GetComponentInParent<MapGenerator>();
+        mg.SetLevel(level);
     }
 }

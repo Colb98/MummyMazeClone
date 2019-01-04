@@ -41,6 +41,15 @@ public class MapGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //ReadMetadata();
+        //GeneratePlayerAndEnemies();
+        //InitializeMaze();
+    }
+
+    public void SetLevel(int index)
+    {
+        Debug.Log("called with " + index.ToString());
+        level = index;
         ReadMetadata();
         GeneratePlayerAndEnemies();
         InitializeMaze();

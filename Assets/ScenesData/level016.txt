@@ -1,51 +1,44 @@
-%Testing comment
-%Every comment should start with '%'
-%First: Row num and Col num
 6 6
 %Second line: The column and row and direction (N: 0, W: 1, S: 2, E: 3) of the escape door (should be at the border)
 %This means the door locates at cell (3,5) - East
-3 5 3
-%Player pos
-0 4
-%Number of mummies and positions
-1
-0 1
-%DATA
+2 5 3
+%TODO: Add player and mummys position
 0 0
-0 0
-0 0
-0 0
-0 0
-0 0
-0 0
-1 1
 0 0
 0 0
 0 1
 1 0
 0 0
 0 0
+1 0
+1 0
+1 0
+1 0
 0 0
 0 0
+1 0
+0 1
+0 1
 0 0
 0 0
 0 1
 0 0
+1 0
 0 0
+1 0
+0 0
+0 0
+1 1
+1 0
 0 1
 1 0
 0 0
 0 0
-0 0
-1 1
-0 0
+0 1
 0 0
 0 0
 0 0
 0 0
-0 0
-0 0
-0 0
-0 0
-% Human location: 4 0
-% Zombie location: 0 1
+% Human location: 3 5
+% Zombie location: 1 5
+% Trap location: 5 2
