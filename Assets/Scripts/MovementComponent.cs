@@ -10,10 +10,14 @@ public class MovementComponent : MonoBehaviour
     const float timeToReach = 1;
     float t = 2;
     bool justMoved = false;
+    public Animation anim;
+    Vector3 waitAngle;
 
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animation>();
+        Debug.Log(anim);
     }
 
     // Update is called once per frame
@@ -30,15 +34,32 @@ public class MovementComponent : MonoBehaviour
             t = 0;
             targetQueue.RemoveAt(0);
             startQueue.RemoveAt(0);
+            if(waitAngle != new Vector3(5,5,5))
+            {
+                transform.eulerAngles = waitAngle;
+                waitAngle = new Vector3(5,5,5);
+            }
         }
         else if (justMoved)
         {
+            float x = transform.position.x;
+            float y = transform.position.y;
+            float z = transform.position.z;
+            x = Mathf.Round(x / 20) * 20;
+            z = Mathf.Round(z / 20) * 20;
+            transform.SetPositionAndRotation(new Vector3(x, y, z), transform.rotation);
+            Debug.Log(x.ToString() + "," + y.ToString() + "," + z.ToString());
             justMoved = false;
             targetQueue.Clear();
             startQueue.Clear();
             WorldManager.movingSomething = false;
             if (gameObject.tag == "Player")
+            {
                 WorldManager.MummyMove();
+                GetComponent<Animator>().SetBool("Walk", false);
+            }
+            else if (gameObject.name.Contains("Mummy") || gameObject.name.Contains("Spider"))
+                GetComponent<Animator>().SetBool("Idle", true);
         }
     }
 
@@ -59,8 +80,14 @@ public class MovementComponent : MonoBehaviour
         t = 0;
         targetQueue.Add(transform.position + Vector3.left * Constant.Size * 10f);
         startQueue.Add(transform.position);
-        if(gameObject.name.Contains("Player"))
+        transform.eulerAngles = new Vector3(0, -90, 0);
+        if (gameObject.name.Contains("Player"))
+        {
             WorldManager.playerPos.x--;
+            GetComponent<Animator>().SetBool("Walk", true);
+        }
+        else if (gameObject.name.Contains("Mummy") || gameObject.name.Contains("Spider"))
+            GetComponent<Animator>().SetBool("Idle", false);
     }
 
     public void MoveRight()
@@ -70,9 +97,15 @@ public class MovementComponent : MonoBehaviour
             return;
         t = 0;
         targetQueue.Add(transform.position + Vector3.right * Constant.Size * 10f);
-        startQueue.Add(transform.position);
+        startQueue.Add(transform.position);        
+        transform.eulerAngles = new Vector3(0, 90, 0);
         if (gameObject.name.Contains("Player"))
+        {
             WorldManager.playerPos.x++;
+            GetComponent<Animator>().SetBool("Walk", true);
+        }
+        else if (gameObject.name.Contains("Mummy") || gameObject.name.Contains("Spider"))
+            GetComponent<Animator>().SetBool("Idle", false);
     }
 
     public void MoveForward()
@@ -83,8 +116,15 @@ public class MovementComponent : MonoBehaviour
         t = 0;
         targetQueue.Add(transform.position + Vector3.forward * Constant.Size * 10f);
         startQueue.Add(transform.position);
+        transform.eulerAngles = new Vector3(0, 0, 0);
+
         if (gameObject.name.Contains("Player"))
+        {
             WorldManager.playerPos.y++;
+            GetComponent<Animator>().SetBool("Walk", true);
+        }
+        else if (gameObject.name.Contains("Mummy") || gameObject.name.Contains("Spider"))
+            GetComponent<Animator>().SetBool("Idle", false);
     }
 
     public void MoveBackward()
@@ -95,14 +135,21 @@ public class MovementComponent : MonoBehaviour
         t = 0;
         targetQueue.Add(transform.position + Vector3.back * Constant.Size * 10f);
         startQueue.Add(transform.position);
+        transform.eulerAngles = new Vector3(0, 180, 0);
         if (gameObject.name.Contains("Player"))
+        {
             WorldManager.playerPos.y--;
+            GetComponent<Animator>().SetBool("Walk", true);
+        }
+        else if (gameObject.name.Contains("Mummy") || gameObject.name.Contains("Spider"))
+            GetComponent<Animator>().SetBool("Idle", false);
     }
 
-    public void MoveFromTo(Vector3 startPos, Vector3 endPos)
+    public void MoveFromTo(Vector3 startPos, Vector3 endPos, Vector3 angle)
     {
         if (targetQueue.Count > 2)
             return;
+        waitAngle = angle;
         targetQueue.Add(endPos);
         startQueue.Add(startPos);
     }

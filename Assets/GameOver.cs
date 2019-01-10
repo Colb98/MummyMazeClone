@@ -12,6 +12,7 @@ public class GameOver : MonoBehaviour
     {
         WorldManager.firstRun = true;
         SceneManager.LoadScene(0);
+        EndTriggerCollision.ResetLevel();
     }
 
     private void OnCollisionEnter(Collision collision)

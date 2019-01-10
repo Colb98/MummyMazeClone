@@ -12,6 +12,8 @@ public class EndTriggerCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!other.gameObject.name.Contains("Player"))
+            return;
         bool end = false;
         if(level < 20)
         {
@@ -35,7 +37,12 @@ public class EndTriggerCollision : MonoBehaviour
     {
         c.enabled = false;
         Debug.Log("Level " + (level - 1).ToString() + " END");
-        if (level <= 5)
+        if (level <= 20)
             WorldManager.GoToLevel(level);
+    }
+
+    public static void ResetLevel()
+    {
+        level = 1;
     }
 }

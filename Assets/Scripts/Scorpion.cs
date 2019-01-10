@@ -90,7 +90,7 @@ public class Scorpion
         else
         {
             Vector3 start = getNewStart();
-            scorpion.GetComponent<MovementComponent>().MoveFromTo(start, start + Vector3.back * 10f * Constant.Size);
+            scorpion.GetComponent<MovementComponent>().MoveFromTo(start, start + Vector3.back * 10f * Constant.Size, new Vector3(0,180,0));
         }
     }
 
@@ -115,7 +115,7 @@ public class Scorpion
         else
         {
             Vector3 start = getNewStart();
-            scorpion.GetComponent<MovementComponent>().MoveFromTo(start, start + Vector3.forward * 10f * Constant.Size);
+            scorpion.GetComponent<MovementComponent>().MoveFromTo(start, start + Vector3.forward * 10f * Constant.Size, new Vector3(0, 0, 0));
         }
     }
 
@@ -138,7 +138,7 @@ public class Scorpion
         else
         {
             Vector3 start = getNewStart();
-            scorpion.GetComponent<MovementComponent>().MoveFromTo(start, start + Vector3.left * 10f * Constant.Size);
+            scorpion.GetComponent<MovementComponent>().MoveFromTo(start, start + Vector3.left * 10f * Constant.Size, new Vector3(0, -90, 0));
         }
     }
 
@@ -163,7 +163,7 @@ public class Scorpion
         else
         {
             Vector3 start = getNewStart();
-            scorpion.GetComponent<MovementComponent>().MoveFromTo(start, start + Vector3.right * 10f * Constant.Size);
+            scorpion.GetComponent<MovementComponent>().MoveFromTo(start, start + Vector3.right * 10f * Constant.Size, new Vector3(0, 90, 0));
         }
     }
 
