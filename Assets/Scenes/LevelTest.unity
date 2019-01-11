@@ -215,7 +215,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 0
+  m_Constraints: 122
   m_CollisionDetection: 1
 --- !u!65 &532353965
 BoxCollider:
@@ -473,7 +473,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 4af9cd9ec521bd74a872d95badbd81a6, type: 2}
+      objectReference: {fileID: 9100000, guid: 4675f30ca1f2ec4419c0a84c62a76e47, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a36d45e1b007e14b884de828f3b6938, type: 3}
 --- !u!1 &1356366062
@@ -511,11 +511,11 @@ MonoBehaviour:
   wall: {fileID: 5751304885450646894, guid: a42f64b19e2ca6d4d8d6ad49187afe6f, type: 3}
   floor: {fileID: 1226897242397772570, guid: 36aeb4c1be4adf04e8493ed56b8e27b8, type: 3}
   player: {fileID: 532353960}
-  mummyAsset: {fileID: 4905204722313337216, guid: 4553936142bd61046879cf8c998d93f1,
+  mummyAsset: {fileID: 1300611964618398, guid: 0584839bceadb844fa31b1ca352056ba, type: 3}
+  redMummyAsset: {fileID: 1300611964618398, guid: c7b80382a5759cb40894c87b4de377a1,
     type: 3}
-  redMummyAsset: {fileID: 595980813129898446, guid: 2c926d7cc006c7d4cbc5a4db817865aa,
+  scorpionAsset: {fileID: 6996796483830729908, guid: 1d42fc03ed21d534ea3be92ddd76f39b,
     type: 3}
-  scorpionAsset: {fileID: 100100, guid: f5a9bd478ca094495a4520e37f57420d, type: 3}
   triggerAsset: {fileID: 4437216086949791721, guid: 76e065931f122b7488204e04962a5ad1,
     type: 3}
 --- !u!4 &1356366065

@@ -50,7 +50,7 @@ public class WorldManager : MonoBehaviour
             mg = gameObject.AddComponent<MapGenerator>();
             mg.SetUp(wall, floor, player, mummyAsset, redMummyAsset, scorpionAsset, triggerAsset);
             firstRun = false;
-            GoToLevel(1);
+            GoToLevel(11);
         }
     }
 

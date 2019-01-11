@@ -3,7 +3,7 @@
 %This means the door locates at cell (3,5) - East
 5 3 0
 %TODO: Add player and mummys position
-1 4
+4 1
 2
 4 3
 4 4

@@ -12,6 +12,7 @@ public class EndTriggerCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        // TODO: remove this and make another good endgame :/
         if (!other.gameObject.name.Contains("Player"))
             return;
         bool end = false;
