@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WorldManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class WorldManager : MonoBehaviour
     public static GameObject endGameTrigger;
     private static MapGenerator mg;
     public static GameObject thePlayer;
+    private static int level;
 
     Quaternion rotation;
 
@@ -42,16 +44,27 @@ public class WorldManager : MonoBehaviour
     [SerializeField]
     private GameObject triggerAsset;
 
+    [SerializeField]
+    private Text levelText;
+
 
     public void Start()
     {
         if (firstRun)
         {
-            mg = gameObject.AddComponent<MapGenerator>();
-            mg.SetUp(wall, floor, player, mummyAsset, redMummyAsset, scorpionAsset, triggerAsset);
-            firstRun = false;
-            GoToLevel(11);
+            level = 1;
         }
+        mg = gameObject.AddComponent<MapGenerator>();
+        mg.SetUp(wall, floor, player, mummyAsset, redMummyAsset, scorpionAsset, triggerAsset);
+        firstRun = false;
+        GoToLevel(level);
+        UpdateText();
+    }
+
+    private void UpdateText()
+    {
+        if (levelText != null)
+            levelText.text = "Level " + level.ToString();
     }
 
     public static void RemoveMummy()
@@ -129,6 +142,7 @@ public class WorldManager : MonoBehaviour
         if (movingSomething)
             return;
 
+        UpdateText();
         if (Input.GetAxis("Vertical") > 0 && playerCanMoveForward())
         {
             player.GetComponent<MovementComponent>().MoveForward();
@@ -199,7 +213,8 @@ public class WorldManager : MonoBehaviour
     }
 
     public static void GoToLevel(int level)
-    {
+    {        
+        WorldManager.level = level;
         //EventSystem.current.SetSelectedGameObject(null);
         foreach (WhiteMummy mummy in whiteMummies)
             Destroy(mummy.GetGameObject());
@@ -209,6 +224,22 @@ public class WorldManager : MonoBehaviour
             thePlayer.GetComponent<MovementComponent>().StopMoving();
         endGameTrigger = null;
         mg.SetLevel(level);
+    }
+
+    public static int GetLevel()
+    {
+        return level;
+    }
+
+    public static void SetLevel(int level)
+    {
+        WorldManager.level = level;
+        firstRun = false;
+    }
+
+    public static void ResetLevel()
+    {
+        level = 1;
     }
 
     public class MapGenerator : MonoBehaviour
@@ -297,7 +328,7 @@ public class WorldManager : MonoBehaviour
                 thePlayer = player;
             WorldManager.playerPos.x = playerPos[1];
             WorldManager.playerPos.y = playerPos[0];
-            WorldManager.thePlayer.transform.position = new Vector3(playerPos[1] * size * 10, 10, playerPos[0] * size * 10);
+            WorldManager.thePlayer.transform.position = new Vector3(playerPos[1] * size * 10, 3, playerPos[0] * size * 10);
 
             // Let the mummy see the map!
             WorldManager.mapData = Scorpion.mapData = RedMummy.mapData = WhiteMummy.mapData = mapData;

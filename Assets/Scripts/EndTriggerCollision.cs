@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class EndTriggerCollision : MonoBehaviour
 {
-    private static int level = 1;
     [SerializeField]
     Canvas canvas;
     [SerializeField]
@@ -16,10 +16,10 @@ public class EndTriggerCollision : MonoBehaviour
         if (!other.gameObject.name.Contains("Player"))
             return;
         bool end = false;
-        if(level < 20)
+        int level = WorldManager.GetLevel();
+        if(level < 19)
         {
             c = Instantiate(canvas);
-            level++;
         }
         else
         {
@@ -36,14 +36,12 @@ public class EndTriggerCollision : MonoBehaviour
 
     public void NextLevel()
     {
+        int level = WorldManager.GetLevel();
+        level++;
+        LoadGame.SaveLevel(level);
         c.enabled = false;
         Debug.Log("Level " + (level - 1).ToString() + " END");
-        if (level <= 20)
+        if (level < 19)
             WorldManager.GoToLevel(level);
-    }
-
-    public static void ResetLevel()
-    {
-        level = 1;
     }
 }
