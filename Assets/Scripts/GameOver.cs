@@ -20,7 +20,8 @@ public class GameOver : MonoBehaviour
     {
         if (collision.gameObject.name.Contains("Player"))
         {
-            Instantiate(GameOverAsset);
+            Canvas canvas = Instantiate(GameOverAsset);
+            canvas.worldCamera = Camera.main;
         }
         else if(collision.gameObject.name.Contains("Mummy") || collision.gameObject.name.Contains("Scorpion"))
         {

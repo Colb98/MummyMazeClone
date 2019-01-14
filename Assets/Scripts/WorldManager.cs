@@ -16,6 +16,7 @@ public class WorldManager : MonoBehaviour
     private static MapGenerator mg;
     public static GameObject thePlayer;
     private static int level;
+    public static bool Paused = false;
 
     Quaternion rotation;
 
@@ -139,7 +140,7 @@ public class WorldManager : MonoBehaviour
 
     public void Update()
     {
-        if (movingSomething)
+        if (movingSomething || Paused)
             return;
 
         UpdateText();

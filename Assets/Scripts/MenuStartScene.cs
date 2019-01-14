@@ -8,4 +8,9 @@ public class MenuStartScene : MonoBehaviour
         SceneManager.LoadScene("LevelTest");
         //EventSystem.current.SetSelectedGameObject(null);
     }
+
+    public void OptionScene()
+    {
+        SceneManager.LoadScene("OptionScene");
+    }
 }

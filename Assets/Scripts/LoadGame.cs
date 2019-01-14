@@ -5,18 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LoadGame : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    public static bool CanContinue = true;
     public static void SaveLevel(int level)
     {
         PlayerPrefs.SetInt("level", level);
@@ -28,7 +17,10 @@ public class LoadGame : MonoBehaviour
         int level = PlayerPrefs.GetInt("level");
         Debug.Log(level);
         if (level < 1 || level > 19)
-            level = 1;
+            CanContinue = false;
+
+        if (!CanContinue)
+            return;
 
         WorldManager.SetLevel(level);
         SceneManager.LoadScene("LevelTest");
